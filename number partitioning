@@ -1,43 +1,57 @@
 import random
 import numpy
 
-class Cromossomo:
+class NumberP:
     
-    def __init__(self, a):
-        self.a = a  
+  def __init__(self, a):
+      self.a = a  
         
-    def dividir(self):
-        tamanho = len(self.a)
-        metade=int(tamanho/2)
-        self.v1 = self.a[0:metade]
-        self.v2 = self.a[metade:tamanho] 
-        print(self.v1)
-        print(self.v2)
+  def dividir(self):
+      tamanho = len(self.a)
+      metade=int(tamanho/2)
+      self.v1 = self.a[0:metade]
+      self.v2 = self.a[metade:tamanho] 
+      print(self.v1)
+      print(self.v2)
 
-    def fitness(self):
-       valor = sum(self.v1)-sum(self.v2)
-       print(abs(valor))
+  def fitness(self):
+      self.valor = abs(sum(self.v1)-sum(self.v2))
+      #print(self.valor)
+
+  def cromossomo(self):
+    tamanho = len(self.a)
+    self.genome = [0]*(tamanho)
+    for i in self.a:
+      for y in self.v1:
+        if y == i:
+          indice = self.a.index(i)
+          print(indice)
+          self.genome[indice] = 1
+    print(self.genome)        
+       
+
 
 
 entrada = [2,3,4,5,6,7]
 
-vetor1 = Cromossomo(entrada)
+vetor1 = NumberP(entrada)
 
 vetor1.dividir()
 vetor1.fitness()
+vetor1.cromossomo()
 
 random.shuffle(entrada)
 
-vetor2 = Cromossomo(entrada)
+vetor2 = NumberP(entrada)
 
 vetor2.dividir()
 vetor2.fitness()
+vetor2.cromossomo()
 
 random.shuffle(entrada)
 
-vetor3 = Cromossomo(entrada)
+vetor3 = NumberP(entrada)
 
 vetor3.dividir()
 vetor3.fitness()
-
-
+vetor3.cromossomo()
